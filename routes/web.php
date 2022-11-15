@@ -25,6 +25,7 @@ route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')
 //blog
 route::get('/blog/index',[BlogController::class,'index'])->name('blog.index');
 route::get('/blog/create',[BlogController::class,'create'])->name('blog.create');
+route::post('/blog/store',[BlogController::class,'store'])->name('blog.store');
 
 
 

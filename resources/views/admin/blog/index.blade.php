@@ -1,95 +1,91 @@
 @extends('admin.layouts.master')
 
 @section('content')
-<div class="content">
-    <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Custom Table</strong>
+
+
+    <div class="content">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Blogs</strong>
+                        </div>
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+
+
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Image</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($form as $form)
+
+
+                                    <tr>
+
+
+
+                                        <td>{{$form->id}}</td>
+                                        <td>{{$form->title}}</td>
+                                        <td>{!! Str::words($form->description, 10, '.....') !!}</td>
+                                        <td>
+                                            @if (empty($form->profile_image))
+                                                <img src="{{ asset('defaultblog.png') }}" width="60px" height="60px" />
+                                            @else
+                                                <img src="{{ asset('uploads/' . $form->profile_image) }}" width="60px"
+                                                    height="60px" />
+                                            @endif
+                                        </td>
+                                        <td>
+
+
+                                            @if ($form->status == 1)
+                                                <spam class="badge badge-primary">Active</spam>
+                                            @else
+                                                <spam class="badge badge-danger">Inactive</spam>
+                                            @endif
+                                        </td>
+                                        <td><a href=""><button type="button"
+                                            class="btn btn-success">Edit </button></a> <a
+                                        href=""><button type="button"
+                                            class="btn btn-danger">Delete </button></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+
+
+                                </tbody>
+                            </table>
+                        </div> <!-- /.table-stats -->
                     </div>
-                    <div class="table-stats order-table ov-h">
-                        <table class="table ">
-                            <thead>
-                                <tr>
-                                    <th class="serial">#</th>
-                                    <th class="avatar">Avatar</th>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="serial">1.</td>
-                                    <td class="avatar">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5469 </td>
-                                    <td>  <span class="name">Louis Stanley</span> </td>
-                                    <td> <span class="product">iMax</span> </td>
-                                    <td><span class="count">231</span></td>
-                                    <td>
-                                        <span class="badge badge-complete">Complete</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="serial">2.</td>
-                                    <td class="avatar">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/2.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5468 </td>
-                                    <td>  <span class="name">Gregory Dixon</span> </td>
-                                    <td> <span class="product">iPad</span> </td>
-                                    <td><span class="count">250</span></td>
-                                    <td>
-                                        <span class="badge badge-complete">Complete</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="serial">3.</td>
-                                    <td class="avatar">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/3.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5467 </td>
-                                    <td>  <span class="name">Catherine Dixon</span> </td>
-                                    <td> <span class="product">SSD</span> </td>
-                                    <td><span class="count">250</span></td>
-                                    <td>
-                                        <span class="badge badge-complete">Complete</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="serial">4.</td>
-                                    <td class="avatar">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/4.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5466 </td>
-                                    <td>  <span class="name">Mary Silva</span> </td>
-                                    <td> <span class="product">Magic Mouse</span> </td>
-                                    <td><span class="count">250</span></td>
-                                    <td>
-                                        <span class="badge badge-pending">Pending</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div> <!-- /.table-stats -->
                 </div>
+
+
+
+
+
+
+
             </div>
+
+
+
+
+
+
+
+
         </div>
-
-
+    </div><!-- .animated -->
 
 @endsection

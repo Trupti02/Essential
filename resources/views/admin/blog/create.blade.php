@@ -1,33 +1,110 @@
 @extends('admin.layouts.master')
 
-
 @section('content')
-<div class="content">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header"><strong>Company</strong><small> Form</small></div>
-            <div class="card-body card-block">
-                <div class="form-group"><label for="company" class=" form-control-label">Company</label><input
-                        type="text" id="company" placeholder="Enter your company name" class="form-control"></div>
-                <div class="form-group"><label for="vat" class=" form-control-label">VAT</label><input
-                        type="text" id="vat" placeholder="DE1234567890" class="form-control"></div>
-                <div class="form-group"><label for="street" class=" form-control-label">Street</label><input
-                        type="text" id="street" placeholder="Enter street name" class="form-control"></div>
-                <div class="row form-group">
-                    <div class="col-8">
-                        <div class="form-group"><label for="city" class=" form-control-label">City</label><input
-                                type="text" id="city" placeholder="Enter your city" class="form-control"></div>
+
+
+    <div class="content">
+        <div class="animated fadeIn">
+
+
+            <div class="row">
+                <!--/.col-->
+
+
+                <div class="col-lg-12">
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="col-8">
-                        <div class="form-group"><label for="postal-code" class=" form-control-label">Postal
-                                Code</label><input type="text" id="postal-code" placeholder="Postal Code"
-                                class="form-control"></div>
+                @endif
+
+                    <div class="card">
+                        <div class="card-header"> <strong>Add Blog</strong></div>
+                        <div class="card-body card-block">
+
+                            <form action="{{route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="title" class="title">Title</label>
+                                    <input type="text" id="title" placeholder="Enter your Title" name="title"
+                                        class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea id="body" name="description" rows="4" cols="50" placeholder="Enter your Description"
+                                        class="form-control"></textarea>
+
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select name="status"class="form-control">
+                                        <option value="" class="option_colour">Select Satus</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="profile_image"> Image</label>
+                                    <input type="file" class="form-control" name="profile_image" id="profile_image"
+                                        placeholder="Upload_image">
+                                </div>
+
+                                <div class="card-group">
+                                    <button type="submit" class="btn btn-primary">Submit</button> &nbsp; &nbsp; &nbsp;
+                                    <button type="submit" class="btn btn-danger">Back</button>
+
+                                    {{-- <a href="{{ route('blog.index') }}"><button type="button" class="btn btn-info">Back </button></a> --}}
+
+                                </div>
+
+
+                            </form>
+
+
+                        </div>
                     </div>
                 </div>
-                <div class="form-group"><label for="country" class=" form-control-label">Country</label><input
-                        type="text" id="country" placeholder="Country name" class="form-control"></div>
+
+
+
+
+
+
+
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
-    </div>
-</div>
+
+
+    </div><!-- .animated -->
 @endsection
