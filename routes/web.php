@@ -26,6 +26,10 @@ route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')
 route::get('/blog/index',[BlogController::class,'index'])->name('blog.index');
 route::get('/blog/create',[BlogController::class,'create'])->name('blog.create');
 route::post('/blog/store',[BlogController::class,'store'])->name('blog.store');
+route::get('/blog/edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
+route::post('/blog/update/{id}',[BlogController::class,'update'])->name('blog.update');
+
+
 
 
 

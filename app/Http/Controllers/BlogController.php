@@ -48,4 +48,38 @@ class BlogController extends Controller
         $form = Blog::all();
         return view('admin.blog.index',compact('form'));
     }
+
+    public function edit($id){
+        $form = Blog::find($id);
+        return view('admin.blog.edit',compact('form'));
+
+
+    }
+
+    public function update(Request $request, $id){
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            // 'category_id' => 'required',
+        ]);
+        $form = Blog::find($id);
+        $form->title=$request->title;
+        $form->description=$request->description;
+        $form->status=$request->status;
+        // $form->category_id=$request->category_id;
+        if($request->hasFile('profile_image'));
+        {
+            $file = $request->file('profile_image');
+            $extension=$file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/',$filename);
+            $form->profile_image = $filename;
+        }
+
+        $form->save();
+
+        return redirect()->route('blog.index')->with('message', 'Update Succesfully!');
+
+    }
 }

@@ -54,7 +54,7 @@
                                                 <spam class="badge badge-danger">Inactive</spam>
                                             @endif
                                         </td>
-                                        <td><a href=""><button type="button"
+                                        <td><a href="{{route('blog.edit',$form->id)}}"><button type="button"
                                             class="btn btn-success">Edit </button></a> <a
                                         href=""><button type="button"
                                             class="btn btn-danger">Delete </button></a>
